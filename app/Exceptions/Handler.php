@@ -30,44 +30,12 @@ class Handler extends ExceptionHandler
     /**
      * Register the exception handling callbacks for the application.
      */
-    public function register(): void
+    public function register()
     {
-        // Handle ValidationException
-        // $this->renderable(function (ValidationException $e, Request $request) {
-        //     Log::error('Validation error in ' . $request->path(), [
-        //         'message' => $e->getMessage(),
-        //         'errors' => $e->errors(),
-        //     ]);
-        //     return $this->errorResponse('Validation failed', 422);
-        // });
-
-        // // Handle NotFoundHttpException
-        // $this->renderable(function (NotFoundHttpException $e, Request $request) {
-        //     Log::error('Not Found error in ' . $request->path(), [
-        //         'message' => $e->getMessage(),
-        //     ]);
-        //     return $this->errorResponse('Resource not found', 404);
-        // });
-
-        // // Handle other exceptions
-        // $this->renderable(function (Throwable $e, Request $request) {
-        //     Log::error('General error in ' . $request->path(), [
-        //         'message' => $e->getMessage(),
-        //         'trace' => $e->getTraceAsString(),
-        //     ]);
-        //     return $this->errorResponse('An error occurred', $e->getCode() > 0 ? $e->getCode() : 500);
-        // });
+        $this->reportable(function (Throwable $e) {
+            //
+        });
     }
 
-    /**
-     * Render an exception into an HTTP response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Throwable  $exception
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function render($request, Throwable $exception): JsonResponse
-    {
-        return parent::render($request, $exception);
-    }
+    
 }
